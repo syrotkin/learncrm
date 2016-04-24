@@ -1,0 +1,610 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head><link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Combined.css?resources=0:Header,0:HeaderFooterSprite,0:Header.NonMtps,1:LinkList;/Areas/Centers/Themes/StandardDevCenter/Content:0,/Areas/Epx/Themes/Base/Content:1&amp;amp;v=2B08C435C8251DADB8A53F8C45B39737" xmlns="http://www.w3.org/1999/xhtml" />
+<link type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml" />
+<link rel="stylesheet" type="text/css" href="https://i-msdn.sec.s-msft.com/Combined.css?resources=0:Footer,0:HeaderFooterSprite,0:Footer.NonMtps,1:FooterSock,1:LinkList;/Areas/Centers/Themes/StandardDevCenter/Content:0,/Areas/Epx/Themes/Base/Content:1&amp;amp;v=1E60E7B49899FEC4640711B64FF56FA6" xmlns="http://www.w3.org/1999/xhtml" />
+<link type="text/css" rel="stylesheet" xmlns="http://www.w3.org/1999/xhtml" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Basic Operations with web API preview</title>
+        <link href="description/Galleries.css" type="text/css" rel="Stylesheet" /><link href="description/Layout.css" type="text/css" rel="Stylesheet" /><link href="description/Brand.css" type="text/css" rel="Stylesheet" />
+        <link href="https://i1.code.msdn.s-msft.com/content/common/iframedescription.css" rel="Stylesheet" type="text/css" />
+        <script src="https://i1.code.msdn.s-msft.com/content/common/offline.js" type="text/javascript"></script>
+        <style type="text/css">
+            #projectInfo {
+                overflow: auto;
+            }
+            #longDesc {
+                clear:both;
+                margin: 25px 0 10px 0;
+            }
+
+            #SampleIndexList{
+                margin-left: 15px;
+            }
+        </style>
+    </head>
+<body>
+    <div id="offlineDescription">
+        <h1>Basic Operations with web API preview</h1>
+        <br/>
+        <div id="projectInfo">
+            <div class="section">
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Technologies">Technologies</label>
+                        <div id="Technologies">
+                            C#, OData v4, Microsoft Dynamics CRM 2015 Online
+                        </div>
+                    </div>
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Topics">Topics</label>
+                        <div id="Topics">
+                            Basic operations with Dynamics CRM Web API Preview
+                        </div>
+                    </div>
+                <div class="itemBarLong">
+                    <label for="Platforms">Platforms</label>
+                    <div id="Platforms">
+                        Cloud, Data
+                    </div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="Requirements">Requirements</label>
+                    <div id="Requirements">
+                        
+                    </div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Primary language</label>
+                    <div id="LastUpdated">en-US</div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Updated</label>
+                    <div id="LastUpdated">6/9/2015</div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="License">License</label>
+                    <div id="License">
+                        <a href="license.rtf">MS-LPL</a></div>
+                </div>
+                <div class="itemBar">
+                    <div class="viewonlinecont">
+                        <a data-link="online" href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f">View this sample online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                   
+<script type="text/javascript">
+    function initializePage() {
+        var otherTabClass = 'otherTab';
+        var hiddenPreClass = 'hidden';
+
+        var htmlDecode = function(encodedData) {
+            var decodedData = "";
+            if (encodedData) {
+                var div = document.createElement('div');
+                div.innerHTML = encodedData;
+                decodedData = div.firstChild.nodeValue.replace( /\\r\\n/ig , '\r\n');
+            }
+            return decodedData;
+        };
+                
+        Galleries.iterateElem(Galleries.findElem(null, 'div', 'scriptcode'), function (index, scriptBlock) {
+            var titleElem = Galleries.findElem(scriptBlock, 'div', 'title')[0];
+            var labelElems = Galleries.findElem(titleElem, 'span');
+            if (labelElems.length == 0) {
+                labelElems = titleElem;
+            }
+            var languageSpans = Galleries.findElem(scriptBlock, 'span', 'hidden');
+            var pres = Galleries.findElem(scriptBlock, 'pre');
+            if (languageSpans.length > 0 && pres.length > 1) {
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    var languageSpan = languageSpans[index];
+                            
+                    elem.code = codePre.innerHTML.replace( /(\r(\n)?)|((\r)?\n)/ig , '\\r\\n');
+                            
+                    codePre.className = codePre.className.replace(hiddenPreClass, '');
+                            
+                    languageSpan.parentNode.removeChild(languageSpan);
+                });
+
+                pres = Galleries.findElem(scriptBlock, 'pre');
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    if (index == 0) {
+                        scriptBlock.activeTab = 0;
+                    }
+                    else {
+                        labelSpan.className += otherTabClass;
+                        codePre.className += hiddenPreClass;
+                    }
+                    Galleries.attachEventHandler(labelSpan, 'click', function(e) {
+                        var activeTab = scriptBlock.activeTab;
+                        labelElems[activeTab].className += otherTabClass;
+                        pres[activeTab].className += hiddenPreClass;
+
+                        codePre.className = codePre.className.replace(hiddenPreClass, '');
+                        labelSpan.className = labelSpan.className.replace(otherTabClass, '');
+                        scriptBlock.activeTab = index;
+                    });
+                });
+
+                var preview = Galleries.findElem(scriptBlock, 'div', 'preview');
+                if (preview.length == 0) {
+                    preview.push(pres[pres.length - 1]);
+                }
+                Galleries.iterateElem(preview, function(index, elem) {
+                    elem.parentNode.removeChild(elem);
+                });
+
+                if (window.clipboardData && clipboardData.setData) {
+                    var copyLink = document.createElement('a');
+                    copyLink.href = 'javascript:void(0);';
+                    copyLink.className = 'copyCode';
+                    copyLink.innerHTML = 'Copy code';
+                    Galleries.attachEventHandler(copyLink, 'click', function (e) {
+                        clipboardData.setData("Text", htmlDecode(labelElems[scriptBlock.activeTab].code));
+                        return false;
+                    });
+                    scriptBlock.insertBefore(copyLink, scriptBlock.childNodes[0]);
+                }
+            }
+        });
+    }
+
+    Galleries.onWindowLoad(function(){
+        initializePage();
+    });
+
+</script>
+<div id="longDesc">
+    
+<div id="crmContent">
+<ul>
+<li><a href="#_Introduction">Introduction </a></li><li><a href="#_Demonstrates">Demonstrates </a></li><li><a href="#_Configuration_and_authentication">Configuration and authentication
+</a></li><li><a href="#_The_Run_method">The Run method </a>
+<ul>
+<li><a href="#_Create_an_entity">Create an entity </a></li><li><a href="#_Retrieve_an_entity">Retrieve an entity </a></li><li><a href="#_Update_an_entity">Update an entity </a></li><li><a href="#_Delete_an_entity">Delete an entity </a></li></ul>
+</li><li><a href="#_Build_and_run">Build and run the BasicOperations program </a></li></ul>
+<h1><a name="_Introduction"></a>Introduction</h1>
+<p>This sample demonstrates how to do basic CRUD operations (create, retrieve, update, and delete) using the Dynamics CRM web API using
+<a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://msdn.microsoft.com/en-us/library/system.net.http.httpclient(v=vs.110).aspx">
+System.Net.Http.HttpClient</a> without any helper libraries other than those to manage authentication and configuration. The Web API is available in the Dynamics CRM Online 2015 Update 1 release as a preview.</p>
+<p>This sample cannot be run using an on-premises environment. See <a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://msdn.microsoft.com/dynamics/crm/webapipreview">
+Microsoft Dynamics CRM Web API Preview</a> for more information.</p>
+<p><strong>Pre-requisite</strong> : In order to run this sample you must first obtain a
+<strong>client ID</strong> and <strong>redirect URL</strong> as described in <a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://msdn.microsoft.com/dynamics/crm/mt149065.aspx">
+Register Application</a>.</p>
+<h1><a name="_Demonstrates"></a>Demonstrates</h1>
+<p>The BasicOperations program demonstrates sending CRUD requests to the Web API Preview web service and receiving a response for each request. The sample includes code to perform these tasks.</p>
+<ul>
+<li>
+<p>Access connection string and app registration information from an app.config file.</p>
+</li><li>
+<p>Authenticates the logged on user with the organization web service.</p>
+</li><li>
+<p>Invokes web methods to send CRUD requests to the web service.</p>
+</li><li>
+<p>Reads each response and handles any returned error.</p>
+</li><li>
+<p>Outputs a text message for each response indicating request processing success or failure to the console.</p>
+</li><li>
+<p>Makes use of helper code that implements common functionality required by the sample.</p>
+</li></ul>
+<h1><a name="_Configuration_and_authentication"></a>Configuration and authentication</h1>
+<p>This sample employs an app.config file to store app registration values, service connection information, and optional user logon credentials. This is managed by the Configuration class that is provided as helper code. The format of the app.config file is
+ shown below.</p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>XML</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">xml</span>
+<pre class="hidden">&lt;connectionStrings&gt;
+
+  &lt;add name=&quot;preview&quot; connectionString=&quot;Url=https://mydomain.crm.dynamics.com; Username=someone@mydomain.onmicrosoft.com; Password=password&quot; /&gt;
+
+&lt;/connectionStrings&gt;
+  
+&lt;appSettings&gt;
+    
+  &lt;add key=&quot;ClientId&quot; value=&quot;e5cf0024-a66a-4f16-85ce-99ba97a24bb2&quot;/&gt;
+  &lt;add key=&quot;RedirectUrl&quot; value=&quot;http://localhost/SdkSample&quot;/&gt;
+
+&lt;/appSettings&gt;
+</pre>
+<div class="preview">
+<pre class="xml"><span class="xml__tag_start">&lt;connectionStrings</span><span class="xml__tag_start">&gt;&nbsp;
+</span>&nbsp;
+&nbsp;&nbsp;<span class="xml__tag_start">&lt;add</span>&nbsp;<span class="xml__attr_name">name</span>=<span class="xml__attr_value">&quot;preview&quot;</span>&nbsp;<span class="xml__attr_name">connectionString</span>=<span class="xml__attr_value">&quot;Url=https://mydomain.crm.dynamics.com;&nbsp;Username=someone@mydomain.onmicrosoft.com;&nbsp;Password=password&quot;</span>&nbsp;<span class="xml__tag_start">/&gt;</span>&nbsp;
+&nbsp;
+<span class="xml__tag_end">&lt;/connectionStrings&gt;</span>&nbsp;
+&nbsp;&nbsp;&nbsp;
+<span class="xml__tag_start">&lt;appSettings</span><span class="xml__tag_start">&gt;&nbsp;
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;<span class="xml__tag_start">&lt;add</span>&nbsp;<span class="xml__attr_name">key</span>=<span class="xml__attr_value">&quot;ClientId&quot;</span>&nbsp;<span class="xml__attr_name">value</span>=<span class="xml__attr_value">&quot;e5cf0024-a66a-4f16-85ce-99ba97a24bb2&quot;</span><span class="xml__tag_start">/&gt;</span>&nbsp;
+&nbsp;&nbsp;<span class="xml__tag_start">&lt;add</span>&nbsp;<span class="xml__attr_name">key</span>=<span class="xml__attr_value">&quot;RedirectUrl&quot;</span>&nbsp;<span class="xml__attr_name">value</span>=<span class="xml__attr_value">&quot;http://localhost/SdkSample&quot;</span><span class="xml__tag_start">/&gt;</span>&nbsp;
+&nbsp;
+<span class="xml__tag_end">&lt;/appSettings&gt;</span>&nbsp;
+</pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;There can be one or more connection strings in the file. The first connection string, from the top of the file, is also the default if no connection string is specified when constructing the Configuration class.</div>
+<p>&nbsp;</p>
+<p>For the ClientId and RedirectUrl values, use the values you obtain from the app registration process described in
+<a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://msdn.microsoft.com/dynamics/crm/mt149065.aspx">Register Application</a>. You can reuse these values in multiple apps as long as it is for development and testing purposes. Once you are ready to publish an app to a store, you will need to obtain
+ unique client ID and redirect URL values for your app.</p>
+<p>The Main method of the program is show below. After instantiating the sample&rsquo;s BasicOperations class, a Configuration object is created. If the name of a connection string is provide as the first argument on the command line, then that specific connection
+ is used. Otherwise, the default Configuration constructor is called which uses the default connection string.</p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">class BasicOperations
+{
+    static public void Main(string[] args)
+    {
+        try
+        {
+
+            BasicOperations app = new BasicOperations();
+
+            // The first argument on the command line is the optional connection
+            // string name from the app.config file.
+            String[] arguments = Environment.GetCommandLineArgs();
+
+            // Create a configuration object to store the service URL and app 
+            // registration settings.
+            Configuration config = null;
+            if (arguments.Length &gt; 1)
+                config = new Configuration(arguments[1], arguments[0] &#43; &quot;.config&quot;);
+            else
+                config = new Configuration();
+
+            // Authenticate the user.
+            Authentication auth = new Authentication(config);
+
+            Task.WaitAll( Task.Run(async () =&gt; await app.Run(auth, config)));
+        }
+ 
+        catch (<a class="libraryLink" href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://msdn.microsoft.com/en-US/library/System.Exception.aspx"  title="Auto generated link to System.Exception">System.Exception</a> ex) { DisplayException(ex); }
+
+        finally
+        {
+            Console.WriteLine(&quot;Press &lt;Enter&gt; to exit the program.&quot;);
+            Console.ReadLine();
+        }
+    }
+</pre>
+<div class="preview">
+<pre class="csharp"><span class="cs__keyword">class</span>&nbsp;BasicOperations&nbsp;
+{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">static</span>&nbsp;<span class="cs__keyword">public</span>&nbsp;<span class="cs__keyword">void</span>&nbsp;Main(<span class="cs__keyword">string</span>[]&nbsp;args)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">try</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BasicOperations&nbsp;app&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;BasicOperations();&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;The&nbsp;first&nbsp;argument&nbsp;on&nbsp;the&nbsp;command&nbsp;line&nbsp;is&nbsp;the&nbsp;optional&nbsp;connection</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;string&nbsp;name&nbsp;from&nbsp;the&nbsp;app.config&nbsp;file.</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[]&nbsp;arguments&nbsp;=&nbsp;Environment.GetCommandLineArgs();&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;Create&nbsp;a&nbsp;configuration&nbsp;object&nbsp;to&nbsp;store&nbsp;the&nbsp;service&nbsp;URL&nbsp;and&nbsp;app&nbsp;</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;registration&nbsp;settings.</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuration&nbsp;config&nbsp;=&nbsp;<span class="cs__keyword">null</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(arguments.Length&nbsp;&gt;&nbsp;<span class="cs__number">1</span>)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;Configuration(arguments[<span class="cs__number">1</span>],&nbsp;arguments[<span class="cs__number">0</span>]&nbsp;&#43;&nbsp;<span class="cs__string">&quot;.config&quot;</span>);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">else</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;Configuration();&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;Authenticate&nbsp;the&nbsp;user.</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authentication&nbsp;auth&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;Authentication(config);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Task.WaitAll(&nbsp;Task.Run(async&nbsp;()&nbsp;=&gt;&nbsp;await&nbsp;app.Run(auth,&nbsp;config)));&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">catch</span>&nbsp;(System.Exception&nbsp;ex)&nbsp;{&nbsp;DisplayException(ex);&nbsp;}&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">finally</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="cs__string">&quot;Press&nbsp;&lt;Enter&gt;&nbsp;to&nbsp;exit&nbsp;the&nbsp;program.&quot;</span>);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.ReadLine();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+</pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;</div>
+<p>&nbsp;</p>
+<p>Next, an Authentication object is created with the configuration passed to it. The Authentication class uses the provided configuration information to authenticate the user and the app, which will happen later in the Run method. The sample then executes
+ the Run method asynchronously.</p>
+<p>The Authentication class is provided as helper code. For more information about authentication, see the topic
+<a href="http://msdn.microsoft.com/dynamics/crm/mt149073.aspx">Authenticate</a>.</p>
+<h1><a name="_The_Run_method"></a>The Run method</h1>
+<p>This sample uses the <a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://msdn.microsoft.com/en-us/library/system.net.http.httpclient(v=vs.110).aspx">
+System.Net.Http.HttpClient</a> class to manage sending requests to the CRM web service. The client object is configured with the SSL (https://) root address of the CRM server, as provided in the app.config file. This sample specifies a two minute timeout to
+ allow for certain times where the CRM server is busy and cannot respond to our requests right away. The OData-MaxVersion and OData-Version headers specify the OData version that this code was written to use.</p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">public async Task Run(Authentication auth, Configuration config)
+{
+    try
+    {
+        using (HttpClient httpClient = new HttpClient())
+        {
+            httpClient.BaseAddress = new Uri(config.ServiceUrl);
+            httpClient.Timeout = new TimeSpan(0, 2, 0);  // 2 minutes
+            httpClient.DefaultRequestHeaders.Add(&quot;OData-MaxVersion&quot;, &quot;4.0&quot;);
+            httpClient.DefaultRequestHeaders.Add(&quot;OData-Version&quot;, &quot;4.0&quot;);
+</pre>
+<div class="preview">
+<pre class="csharp"><span class="cs__keyword">public</span>&nbsp;async&nbsp;Task&nbsp;Run(Authentication&nbsp;auth,&nbsp;Configuration&nbsp;config)&nbsp;
+{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">try</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">using</span>&nbsp;(HttpClient&nbsp;httpClient&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;HttpClient())&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpClient.BaseAddress&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;Uri(config.ServiceUrl);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpClient.Timeout&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;TimeSpan(<span class="cs__number">0</span>,&nbsp;<span class="cs__number">2</span>,&nbsp;<span class="cs__number">0</span>);&nbsp;&nbsp;<span class="cs__com">//&nbsp;2&nbsp;minutes</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpClient.DefaultRequestHeaders.Add(<span class="cs__string">&quot;OData-MaxVersion&quot;</span>,&nbsp;<span class="cs__string">&quot;4.0&quot;</span>);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpClient.DefaultRequestHeaders.Add(<span class="cs__string">&quot;OData-Version&quot;</span>,&nbsp;<span class="cs__string">&quot;4.0&quot;</span>);&nbsp;</pre>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<h2><a name="_Create_an_entity"></a>Create an entity</h2>
+<p>The code to create an account entity is shown below. A local in-memory Account object is created and its properties are populated with some values. A simple Account class is defined elsewhere in the sample code and just contains the two properties shown.
+ Another method of defining an entity is to create the entity dynamically as a <a href="http://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JObject.htm">
+JObject</a>, which is demonstrated in a later section of this topic. You can add any supported entity properties. The properties available using the web API preview are define within the metadata document. See
+<a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://msdn.microsoft.com/dynamics/crm/mt149064.aspx">Web API preview types, functions and actions</a> for information about how you can understand which properties are available.</p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">    Account account = new Account();
+    account.name = &quot;Contoso&quot;;
+    account.telephone1 = &quot;555-5555&quot;;
+
+    httpClient.DefaultRequestHeaders.Authorization = 
+        new AuthenticationHeaderValue(&quot;Bearer&quot;, auth.AcquireToken().AccessToken);
+
+    // POST api/data/accounts
+    HttpResponseMessage response =
+        await HttpClientExtensions.SendAsJsonAsync&lt;Account&gt;(httpClient, 
+            HttpMethod.Post, &quot;api/data/accounts&quot;, account);
+    if (response.IsSuccessStatusCode)
+        Console.WriteLine(&quot;Account '{0}' created.&quot;, account.name);
+    else
+        throw new Exception(String.Format(
+            &quot;Failed to create account '{0}', reason is '{1}'.&quot;,
+            account.name, response.ReasonPhrase),
+            new CrmHttpResponseException(response.Content));
+</pre>
+<div class="preview">
+<pre class="csharp">&nbsp;&nbsp;&nbsp;&nbsp;Account&nbsp;account&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;Account();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;account.name&nbsp;=&nbsp;<span class="cs__string">&quot;Contoso&quot;</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;account.telephone1&nbsp;=&nbsp;<span class="cs__string">&quot;555-5555&quot;</span>;&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;httpClient.DefaultRequestHeaders.Authorization&nbsp;=&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;AuthenticationHeaderValue(<span class="cs__string">&quot;Bearer&quot;</span>,&nbsp;auth.AcquireToken().AccessToken);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;POST&nbsp;api/data/accounts</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;HttpResponseMessage&nbsp;response&nbsp;=&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;await&nbsp;HttpClientExtensions.SendAsJsonAsync&lt;Account&gt;(httpClient,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpMethod.Post,&nbsp;<span class="cs__string">&quot;api/data/accounts&quot;</span>,&nbsp;account);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(response.IsSuccessStatusCode)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="cs__string">&quot;Account&nbsp;'{0}'&nbsp;created.&quot;</span>,&nbsp;account.name);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">else</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">throw</span>&nbsp;<span class="cs__keyword">new</span>&nbsp;Exception(String.Format(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__string">&quot;Failed&nbsp;to&nbsp;create&nbsp;account&nbsp;'{0}',&nbsp;reason&nbsp;is&nbsp;'{1}'.&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;account.name,&nbsp;response.ReasonPhrase),&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;CrmHttpResponseException(response.Content));&nbsp;
+</pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;</div>
+<p>&nbsp;</p>
+<p>The code sets the default Authorization header with the <a href="http://oauth.net/">
+OAuth</a> 2.0 access token. The web service employs an OAuth identity provider that requires a bearer access token to authorize the logged on user to perform a web service operation.</p>
+<p>Next, the code sends an <a href="http://www.w3.org/Protocols/">HTTP</a> POST message request to the accounts collection (api/data/accounts). The content of that request is a serialized JSON payload of our in-memory Account object. The response is checked
+ for any errors, which are packaged into a custom exception and eventually output to the console. If the operation was successful, the response returns a status code of 204 (No Content) and contains a URI of the new account entity in the
+<strong>OData-EntityId</strong> header. For more information on creating an entity see
+<a href="http://msdn.microsoft.com/dynamics/crm/mt149070.aspx">Create an entity</a>.</p>
+<h2><a name="_Retrieve_an_entity"></a>Retrieve an entity</h2>
+<p>This next section of code retrieves the account entity that we just created in the CRM database and populates an in-memory Account object with the account&rsquo;s data as retrieved from the web service.</p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">   httpClient.DefaultRequestHeaders.Authorization = 
+        new AuthenticationHeaderValue(&quot;Bearer&quot;, auth.AcquireToken().AccessToken);
+
+    // GET api/data/accounts(&lt;guid&gt;)?$select=name,telephone1
+    string accountUri = response.Headers.GetValues(&quot;OData-EntityId&quot;).FirstOrDefault();
+    var retrieveResponse = await httpClient.GetAsync(accountUri &#43; 
+        &quot;?$select=name,telephone1&quot;);
+
+    Account retrievedAccount = null;
+    if (retrieveResponse.IsSuccessStatusCode)
+    {
+        retrievedAccount = JsonConvert.DeserializeObject&lt;Account&gt;(await retrieveResponse.Content.ReadAsStringAsync());
+        Console.WriteLine(&quot;Account '{0}' retrieved.&quot;, retrievedAccount.name);
+    }
+    else
+        throw new Exception(
+            String.Format(&quot;Failed to retrieve the account, reason is '{0}'.&quot;,
+                           retrieveResponse.ReasonPhrase), 
+                           new CrmHttpResponseException(response.Content));
+</pre>
+<div class="preview">
+<pre class="csharp">&nbsp;&nbsp;&nbsp;httpClient.DefaultRequestHeaders.Authorization&nbsp;=&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;AuthenticationHeaderValue(<span class="cs__string">&quot;Bearer&quot;</span>,&nbsp;auth.AcquireToken().AccessToken);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;GET&nbsp;api/data/accounts(&lt;guid&gt;)?$select=name,telephone1</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">string</span>&nbsp;accountUri&nbsp;=&nbsp;response.Headers.GetValues(<span class="cs__string">&quot;OData-EntityId&quot;</span>).FirstOrDefault();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;retrieveResponse&nbsp;=&nbsp;await&nbsp;httpClient.GetAsync(accountUri&nbsp;&#43;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__string">&quot;?$select=name,telephone1&quot;</span>);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;Account&nbsp;retrievedAccount&nbsp;=&nbsp;<span class="cs__keyword">null</span>;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(retrieveResponse.IsSuccessStatusCode)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retrievedAccount&nbsp;=&nbsp;JsonConvert.DeserializeObject&lt;Account&gt;(await&nbsp;retrieveResponse.Content.ReadAsStringAsync());&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="cs__string">&quot;Account&nbsp;'{0}'&nbsp;retrieved.&quot;</span>,&nbsp;retrievedAccount.name);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">else</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">throw</span>&nbsp;<span class="cs__keyword">new</span>&nbsp;Exception(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String.Format(<span class="cs__string">&quot;Failed&nbsp;to&nbsp;retrieve&nbsp;the&nbsp;account,&nbsp;reason&nbsp;is&nbsp;'{0}'.&quot;</span>,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retrieveResponse.ReasonPhrase),&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;CrmHttpResponseException(response.Content));&nbsp;
+</pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;The access token in the Authorization header should be re-acquired before each request message is sent to address the possibility of the token expiring while your program is running. Use an HTTP GET request using the URI of
+ the account entity. Use the select system query option to return the properties required. If no properties are specified, all non-null property values will be returned.</div>
+<p>&nbsp;</p>
+<p>After checking for a successful response, the account entity data is then read from the response content and converted into an in-memory Account object.</p>
+<p>For more information on retrieving an entity see <a href="http://msdn.microsoft.com/dynamics/crm/mt149058.aspx">
+Retrieve an entity</a>.</p>
+<h2><a name="_Update_an_entity"></a>Update an entity</h2>
+<p>Now let&rsquo;s update a property of the account entity. To update the name property of the account entity, the sample first dynamically creates a JSON JObject containing a &ldquo;name&rdquo; property and value instead of using the static Account class.
+ This was done to show an alternate technique. The code then sends a PATCH request to the web service, identifying the account entity by its URI, and providing the updated account data.</p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">    httpClient.DefaultRequestHeaders.Authorization = 
+        new AuthenticationHeaderValue(&quot;Bearer&quot;, auth.AcquireToken().AccessToken);
+
+    JObject accountToUpdate = new JObject();
+    accountToUpdate.Add(&quot;name&quot;, retrievedAccount.name &#43; &quot; Incorporated&quot;);
+
+    // PATCH api/data/acounts(&lt;guid&gt;)
+    response = await HttpClientExtensions.SendAsJsonAsync&lt;JObject&gt;(
+        httpClient, new HttpMethod(&quot;PATCH&quot;), accountUri, accountToUpdate);
+
+    if (response.IsSuccessStatusCode)
+        Console.WriteLine(&quot;Account '{0}' updated.&quot;, accountToUpdate[&quot;name&quot;]);
+    else
+        throw new Exception(
+            String.Format(
+                &quot;Failed to update account '{0}', reason is '{1}'.&quot;, 
+                retrievedAccount.name, response.ReasonPhrase), 
+                new CrmHttpResponseException(response.Content));
+</pre>
+<div class="preview">
+<pre class="csharp">&nbsp;&nbsp;&nbsp;&nbsp;httpClient.DefaultRequestHeaders.Authorization&nbsp;=&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;AuthenticationHeaderValue(<span class="cs__string">&quot;Bearer&quot;</span>,&nbsp;auth.AcquireToken().AccessToken);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;JObject&nbsp;accountToUpdate&nbsp;=&nbsp;<span class="cs__keyword">new</span>&nbsp;JObject();&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;accountToUpdate.Add(<span class="cs__string">&quot;name&quot;</span>,&nbsp;retrievedAccount.name&nbsp;&#43;&nbsp;<span class="cs__string">&quot;&nbsp;Incorporated&quot;</span>);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;PATCH&nbsp;api/data/acounts(&lt;guid&gt;)</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;response&nbsp;=&nbsp;await&nbsp;HttpClientExtensions.SendAsJsonAsync&lt;JObject&gt;(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;httpClient,&nbsp;<span class="cs__keyword">new</span>&nbsp;HttpMethod(<span class="cs__string">&quot;PATCH&quot;</span>),&nbsp;accountUri,&nbsp;accountToUpdate);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(response.IsSuccessStatusCode)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="cs__string">&quot;Account&nbsp;'{0}'&nbsp;updated.&quot;</span>,&nbsp;accountToUpdate[<span class="cs__string">&quot;name&quot;</span>]);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">else</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">throw</span>&nbsp;<span class="cs__keyword">new</span>&nbsp;Exception(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String.Format(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__string">&quot;Failed&nbsp;to&nbsp;update&nbsp;account&nbsp;'{0}',&nbsp;reason&nbsp;is&nbsp;'{1}'.&quot;</span>,&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;retrievedAccount.name,&nbsp;response.ReasonPhrase),&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;CrmHttpResponseException(response.Content));&nbsp;</pre>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>For more information about updating an entity, see <a href="http://msdn.microsoft.com/dynamics/crm/mt149067.aspx">
+Update, upsert, or delete entities</a>.</p>
+<h2><a name="_Delete_an_entity"></a>Delete an entity</h2>
+<p>To delete an entity, send a DELETE message request specifying the entity URI.</p>
+<p>&nbsp;</p>
+<div class="scriptcode">
+<div class="pluginEditHolder" pluginCommand="mceScriptCode">
+<div class="title"><span>C#</span></div>
+<div class="pluginLinkHolder"><span class="pluginEditHolderLink">Edit</span>|<span class="pluginRemoveHolderLink">Remove</span></div>
+<span class="hidden">csharp</span>
+<pre class="hidden">    httpClient.DefaultRequestHeaders.Authorization = 
+        new AuthenticationHeaderValue(&quot;Bearer&quot;, auth.AcquireToken().AccessToken);
+
+    // DELETE api/data/accounts(&lt;guid&gt;)
+    response = await httpClient.DeleteAsync(accountUri);
+
+    if (response.IsSuccessStatusCode)
+        Console.WriteLine(&quot;Account '{0}' deleted.&quot;, retrievedAccount.name);
+    else
+        throw new Exception(
+            String.Format(
+            &quot;Failed to delete account '{0}', reason is '{1}'.&quot;, retrievedAccount.name,
+            response.ReasonPhrase), new CrmHttpResponseException(response.Content));
+</pre>
+<div class="preview">
+<pre class="csharp">&nbsp;&nbsp;&nbsp;&nbsp;httpClient.DefaultRequestHeaders.Authorization&nbsp;=&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">new</span>&nbsp;AuthenticationHeaderValue(<span class="cs__string">&quot;Bearer&quot;</span>,&nbsp;auth.AcquireToken().AccessToken);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__com">//&nbsp;DELETE&nbsp;api/data/accounts(&lt;guid&gt;)</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;response&nbsp;=&nbsp;await&nbsp;httpClient.DeleteAsync(accountUri);&nbsp;
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">if</span>&nbsp;(response.IsSuccessStatusCode)&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(<span class="cs__string">&quot;Account&nbsp;'{0}'&nbsp;deleted.&quot;</span>,&nbsp;retrievedAccount.name);&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">else</span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__keyword">throw</span>&nbsp;<span class="cs__keyword">new</span>&nbsp;Exception(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String.Format(&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cs__string">&quot;Failed&nbsp;to&nbsp;delete&nbsp;account&nbsp;'{0}',&nbsp;reason&nbsp;is&nbsp;'{1}'.&quot;</span>,&nbsp;retrievedAccount.name,&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response.ReasonPhrase),&nbsp;<span class="cs__keyword">new</span>&nbsp;CrmHttpResponseException(response.Content));&nbsp;
+</pre>
+</div>
+</div>
+</div>
+<div class="endscriptcode">&nbsp;For more information about deleting an entity, see
+<a href="http://msdn.microsoft.com/dynamics/crm/mt149067.aspx">Update, upsert, or delete entities</a>.</div>
+<p>&nbsp;</p>
+<h1><a name="_Build_and_run"></a>Build and run the BasicOperations program</h1>
+<p>To build and run the sample, follow these steps.</p>
+<ol>
+<li>
+<p>Download the sample, and then load the provided solution file in the C# folder into Visual Studio.</p>
+</li><li>
+<p>Change the <strong>connectionString</strong>, <strong>ClientId</strong>, and <strong>
+RedirectUrl</strong> values in the app.config file as appropriate for your Azure Active Directory app registration and CRM organization service.</p>
+</li><li>
+<p>Press F5 to build and run the program. During the build, the <a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://www.nuget.org/packages/Newtonsoft.Json">
+Json.NET</a> <a href="https://code.msdn.microsoft.com/Basic-Operations-with-web-67fc1d8f/https://www.nuget.org/">NuGet</a> package will be automatically installed into your project. This requires that your development computer be connected to the internet at the time of the build.</p>
+</li><li>
+<p>You will be prompted by ADAL to enter your CRM username and password if they have not been provided in the app.config file or the values provided are incorrect. For a CRM Online tenant provisioned through Office 365, your username would be something similar
+ to someone@mydomain.crm.dynamics.com.</p>
+</li><li>
+<p>You may be prompted by Azure to accept app access to your CRM organization&rsquo;s data.</p>
+</li></ol>
+<p>When run, the console output that you will see is shown below.</p>
+<p><img id="138754" src="description/WebAPIPreviewBasicOperations.png" alt="" width="592" height="146"></p>
+</div>
+
+</div>
+
+
+    </div>
+</body>
+</html>
