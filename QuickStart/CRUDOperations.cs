@@ -21,6 +21,8 @@ using System.ServiceModel.Security;
 
 // These namespaces are found in the Microsoft.Xrm.Sdk.dll and 
 // Microsoft.Crm.Sdk.Proxy.dll assemblies.
+using Elca;
+
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Sdk.Client;

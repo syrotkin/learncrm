@@ -87,11 +87,11 @@
     <Compile Include="..\HelperCode\DeviceIdManager.cs">
       <Link>DeviceIdManager.cs</Link>
     </Compile>
-    <Compile Include="..\HelperCode\MyOrganizationCrmSdkTypes.cs">
-      <Link>MyOrganizationCrmSdkTypes.cs</Link>
-    </Compile>
     <Compile Include="..\HelperCode\OptionSets.cs">
       <Link>OptionSets.cs</Link>
+    </Compile>
+    <Compile Include="..\HelperCode\OsyTypes.cs">
+      <Link>OsyTypes.cs</Link>
     </Compile>
     <Compile Include="CRUDOperations.cs" />
   </ItemGroup>

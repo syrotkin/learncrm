@@ -24,6 +24,8 @@ using System.ServiceModel;
 
 // These namespaces are found in the Microsoft.Crm.Sdk.Proxy.dll assembly
 // located in the SDK\bin folder of the SDK download.
+using Elca;
+
 using Microsoft.Crm.Sdk.Messages;
 
 // These namespaces are found in the Microsoft.Xrm.Sdk.dll assembly
@@ -84,7 +86,9 @@ namespace Microsoft.Crm.Sdk.Samples
 
                 DisplayDynamicsCrmVersion();
 
-                TryWebApi();
+                //TryWebApi();
+
+               
 
 
                 var searchString = GetAccountSearchString();
@@ -124,6 +128,9 @@ namespace Microsoft.Crm.Sdk.Samples
                 UpdateAccount(retrievedAccount);
                 Console.WriteLine("and updated.");
 
+
+                ExecuteActions(retrievedAccount);
+
                 // Delete any entity records this sample created.
                 DeleteRequiredRecords(promptforDelete);
             }
@@ -134,6 +141,20 @@ namespace Microsoft.Crm.Sdk.Samples
                 // You can handle an exception here or pass it back to the calling method.
                 throw;
             }
+        }
+
+        // 1. Create Action
+        // 2. Go to a solution, Processes, Add Existing
+        // 3. run crmSvcUtil with all the parameters + /generateActions
+        // 4. Use the generated .cs file with the correct namespace, correct arguments
+        private void ExecuteActions(Account retrievedAccount) {
+            new_DelegateRequest request = new new_DelegateRequest();
+            request.EntityCollection = new EntityCollection(new List<Entity> {
+                retrievedAccount
+            });
+            request.Subject = "dummy action request";
+            request.Target = new EntityReference("account", retrievedAccount.Id);
+            var response = _organizationService.Execute(request);
         }
 
         private async void TryWebApi() {

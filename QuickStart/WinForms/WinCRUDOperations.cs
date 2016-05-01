@@ -22,6 +22,8 @@ using System.ServiceModel;
 
 // These namespaces are found in the Microsoft.Crm.Sdk.Proxy.dll assembly
 // located in the SDK\bin folder of the SDK download.
+using Elca;
+
 using Microsoft.Crm.Sdk.Messages;
 
 // These namespaces are found in the Microsoft.Xrm.Sdk.dll assembly
