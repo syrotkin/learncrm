@@ -60,7 +60,7 @@ namespace Microsoft.Crm.Sdk.Samples
 
         #endregion Class Level Members
 
-         /// <summary>
+        /// <summary>
         /// The Run() method first connects to the Organization service. Afterwards,
         /// basic create, retrieve, update, and delete entity operations are performed.
         /// </summary>
@@ -73,10 +73,10 @@ namespace Microsoft.Crm.Sdk.Samples
             {
                 // Connect to the CRM web service using a connection string.
                 CrmServiceClient conn = new Xrm.Tooling.Connector.CrmServiceClient(connectionString);
- 
+
                 // Cast the proxy client to the IOrganizationService interface.
                 _organizationService = (IOrganizationService)conn.OrganizationWebProxyClient != null ? (IOrganizationService)conn.OrganizationWebProxyClient : (IOrganizationService)conn.OrganizationServiceProxy;
-             
+
                 //Create any entity records this sample requires.
                 CreateRequiredRecords();
 
@@ -84,7 +84,7 @@ namespace Microsoft.Crm.Sdk.Samples
 
                 DisplayDynamicsCrmVersion();
 
-                TryWebApi();
+                //TryWebApi();
 
 
                 var searchString = GetAccountSearchString();
@@ -99,7 +99,7 @@ namespace Microsoft.Crm.Sdk.Samples
                 var contact = CreateContact(contactLastName);
                 var retrievedContact = RetrieveContactById();
                 Console.WriteLine("created contact retrieved: " + retrievedContact.FullName + ", ELCA: " + retrievedContact.GetAttributeValue<bool>("new_iselcaemployee"));
-                
+
                 // create a new animal (Late bound):
                 var entity = new Entity("new_animal");
                 entity["new_name"] = "Pluto";
@@ -117,7 +117,7 @@ namespace Microsoft.Crm.Sdk.Samples
                 // displaying the retrieved attributes of the account:
                 Console.WriteLine("Account information: "
                                   + Environment.NewLine
-                                  + "name: {0}, address1_postalcode: {1}, lastusedincampaign: {2}", retrievedAccount.Name, 
+                                  + "name: {0}, address1_postalcode: {1}, lastusedincampaign: {2}", retrievedAccount.Name,
                                   retrievedAccount.Address1_PostalCode, retrievedAccount.LastUsedInCampaign);
 
 
@@ -159,7 +159,7 @@ namespace Microsoft.Crm.Sdk.Samples
                 // avoids having to check the expiration date/time of the token. This operation is quick.
                 // OSY: commented this out.... because I don't have "auth", because I don't have a ClientId
                 //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", auth.AcquireToken().AccessToken);
-                
+
 
                 // Send the request, and then check the response for success.
                 // POST api/data/accounts
@@ -175,7 +175,7 @@ namespace Microsoft.Crm.Sdk.Samples
                     throw new Exception(String.Format("Failed to create account '{0}', reason is '{1}'.",
                                         account.Name, response.ReasonPhrase), new CrmHttpResponseException(response.Content));
                 #endregion Create a entity
-            }   
+            }
         }
 
         private Contact CreateContact(string contactName) {
@@ -193,7 +193,7 @@ namespace Microsoft.Crm.Sdk.Samples
             // Instantiate an account object. Note the use of option set enumerations defined in OptionSets.cs.
             // Refer to the Entity Metadata topic in the SDK documentation to determine which attributes must
             // be set for each entity.
-            
+
             var account = new Account {
                 Name = accountName,
                 AccountCategoryCode = new OptionSetValue((int)AccountAccountCategoryCode.PreferredCustomer),
@@ -204,7 +204,7 @@ namespace Microsoft.Crm.Sdk.Samples
             _accountId = _organizationService.Create(account);
             return account;
 
-            
+
         }
 
         private string GetAccountSearchString() {
@@ -229,8 +229,41 @@ namespace Microsoft.Crm.Sdk.Samples
             // Obtain information about the logged on user from the web service.
             Guid userid = ((WhoAmIResponse)_organizationService.Execute(new WhoAmIRequest())).UserId;
             SystemUser systemUser = (SystemUser)_organizationService.Retrieve("systemuser", userid,
-                    new ColumnSet(new string[] {"firstname", "lastname"}));
+                    new ColumnSet(new string[] { "firstname", "lastname" }));
             Console.WriteLine("Logged on user is {0} {1}.", systemUser.FirstName, systemUser.LastName);
+        }
+
+        private void CreateWorkflow()
+        {
+            // Create a real-time workflow. 
+            // The workflow should execute after a new opportunity is created
+            // and run in the context of the logged on user.
+            Workflow workflow = new Workflow()
+            {
+                // These properties map to the New Process form settings in the web application.
+                Name = "Set closeprobability on opportunity create (real-time)",
+                Type = new OptionSetValue((int)WorkflowType.Definition),
+                Category = new OptionSetValue((int)WorkflowCategory.Workflow),
+                PrimaryEntity = Opportunity.EntityLogicalName,
+                Mode = new OptionSetValue((int)WorkflowMode.Realtime),
+
+                // Additional settings from the second New Process form.
+                Description = @"When an opportunity is created, this workflow" +
+                    " sets the closeprobability field of the opportunity record to 40%.",
+                OnDemand = false,
+                Subprocess = false,
+                Scope = new OptionSetValue((int)WorkflowScope.User),
+                RunAs = new OptionSetValue((int)workflow_runas.CallingUser),
+                SyncWorkflowLogOnFailure = true,
+                TriggerOnCreate = true,
+                CreateStage = new OptionSetValue((int)workflow_stage.Postoperation),
+                // TODO-osy: figure out what to do with XAML
+                //Xaml = xamlWF,
+
+                // Other properties not in the web forms.
+                LanguageCode = 1033,  // U.S. English
+            };
+            Guid _workflowId = _organizationService.Create(workflow);
         }
 
         private void DisplayDynamicsCrmVersion() {
