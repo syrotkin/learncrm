@@ -24,10 +24,13 @@ using System.ServiceModel;
 
 // These namespaces are found in the Microsoft.Crm.Sdk.Proxy.dll assembly
 // located in the SDK\bin folder of the SDK download.
+using Elca;
+
 using Microsoft.Crm.Sdk.Messages;
 
 // These namespaces are found in the Microsoft.Xrm.Sdk.dll assembly
 // located in the SDK\bin folder of the SDK download.
+using Microsoft.IdentityModel.Protocols.WSIdentity;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using Microsoft.Xrm.Tooling.Connector;
@@ -124,6 +127,10 @@ namespace Microsoft.Crm.Sdk.Samples
                 UpdateAccount(retrievedAccount);
                 Console.WriteLine("and updated.");
 
+
+                //ExecuteActions(retrievedAccount);
+                ExecuteCallAddActivityAction();
+
                 // Delete any entity records this sample created.
                 DeleteRequiredRecords(promptforDelete);
             }
@@ -135,6 +142,33 @@ namespace Microsoft.Crm.Sdk.Samples
                 throw;
             }
         }
+
+        // 1. Create Action
+        // 2. Go to a solution, Processes, Add Existing
+        // 3. run crmSvcUtil with all the parameters + /generateActions
+        // 4. Use the generated .cs file with the correct namespace, correct arguments
+        private void ExecuteActions(Account retrievedAccount) {
+            new_DelegateRequest request = new new_DelegateRequest();
+            request.EntityCollection = new EntityCollection(new List<Entity> {
+                retrievedAccount
+            });
+            request.Subject = "dummy action request";
+            request.Target = new EntityReference("account", retrievedAccount.Id);
+            var response = _organizationService.Execute(request);
+        }
+
+        private void ExecuteCallAddActivityAction() {
+            new_CallAddActivityRequest request = new new_CallAddActivityRequest();
+            request.firstSummand = 2;
+            request.secondSummand = 3;
+            //request.Target =  // no target, it is a global action
+            var response = _organizationService.Execute(request);
+        }
+
+        /*
+         E:\Downloads\Installers\dev\CRM\CRMSDK\SDK\Bin>CrmSvcUtil.exe /url:http://phillyhillel.crm.dynamics.com/XRMServices/2011/Organization.svc /out:OsyTypes.cs /username:bobmeierus
+                er@phillyhillel.onmicrosoft.com /password:xxxxxxx /namespace:Elca /serviceContextName:ServiceContext /generateActions
+         */
 
         private async void TryWebApi() {
             using (var httpClient = new HttpClient()) {

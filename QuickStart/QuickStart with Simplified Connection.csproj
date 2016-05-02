@@ -112,17 +112,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\HelperCode\MyOrganizationCrmSdkTypes.cs">
-      <Link>MyOrganizationCrmSdkTypes.cs</Link>
-    </Compile>
     <Compile Include="..\HelperCode\OptionSets.cs">
       <Link>OptionSets.cs</Link>
+    </Compile>
+    <Compile Include="..\HelperCode\OsyTypes.cs">
+      <Link>OsyTypes.cs</Link>
     </Compile>
     <Compile Include="CrmHttpResponseException.cs" />
     <Compile Include="HttpClientExtensions.cs" />
     <Compile Include="SimplifiedConnection.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app .config.sample" />
     <None Include="app.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
